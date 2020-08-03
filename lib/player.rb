@@ -3,7 +3,7 @@ class Player
 
   def initialize
     @players = []
-    @index = -1
+    @index = 0
   end
 
   def icon
