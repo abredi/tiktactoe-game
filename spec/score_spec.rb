@@ -1,9 +1,10 @@
 require 'rspec'
-require '../lib/player.rb'
-require '../lib/score.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/score.rb'
 
 RSpec.describe Score do
   subject { Score.new(player) }
+
   let(:board) { [[1, 2, 3], [4, 5, 6], [7, 8, 9]] }
   let(:player) do
     player = Player.new
@@ -45,6 +46,18 @@ RSpec.describe Score do
 
     it 'test for a unfinished game' do
       expect(subject.check_winner([[1, 2, '*'], [4, 5, 6], [7, 8, 9]], [1, 2])).to be(false)
+    end
+  end
+
+  context '#draw' do
+    it 'should return false if the occupied spaces by a each player is less than 4' do
+      board.first.fill('#')
+      expect(subject.draw(board)).to be false
+    end
+
+    it 'should return true the occupied spaces by a each player is greater than 4' do
+      board.map { |ary| ary.fill('*') }
+      expect(subject.draw(board)).to be true
     end
   end
 end

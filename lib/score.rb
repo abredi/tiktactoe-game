@@ -35,7 +35,7 @@ class Score
   end
 
   def draw(board)
-    return true if board.flatten.count { |item| item == '#' } > 4
+    return true if board.flatten.count { |item| item == players.icon } > 4
 
     false
   end

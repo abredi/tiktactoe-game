@@ -1,11 +1,12 @@
 require 'rspec'
-require '../lib/player'
+require_relative '../lib/player'
 
 RSpec.describe Player do
   before do
     subject.players.push('Ali')
     subject.players.push('Alex')
   end
+
   context 'when first created' do
     it 'should be instance of player class' do
       expect(subject).to be_instance_of Player
